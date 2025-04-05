@@ -63,6 +63,9 @@ while True:   # no empty commands allowed
             speak("Hello! How can I assist you?")
         elif "your name" in command:
             speak("I am your voice assistant and my name is kelly.")
+        elif "joke" in command:
+            joke = random.choice(jokes)
+            speak(joke)
         else:
             speak("I did not understand that. Please try again.")
     else:
