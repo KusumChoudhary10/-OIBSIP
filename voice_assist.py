@@ -3,6 +3,7 @@ import time
 import speech_recognition as sr
 from gtts import gTTS
 import pyglet
+import random
 
 pyglet.options['audio'] = ('openal', 'directsound', 'pulse')
 
@@ -49,20 +50,34 @@ def get_audio():
     return ""
 
 jokes = ["Parallel lines have so much in common. It’s a shame they’ll never meet.",
-         "Why do programmers prefer dark mode? Because light attracts bugs",""]
+         "Why do programmers prefer dark mode? Because light attracts bugs"]
 
-speak("Hello, I am your voice assistant. How can I help you today?")
+greetings = ["Hi there!", "Hello!", "Hey! What's up?", "How can I help you today?"]
+speak(random.choice(greetings))
+
+
+
 while True:   # no empty commands allowed 
     command = get_audio()
     if command:
         command = command.lower()
-        if "stop" in command:
-            speak("okay, bye.")
+        if "bye" in command or "stop" in command:
+            speak("okay  bye. Run the code again to talk to me!")
             break
         elif "hello" in command:
-            speak("Hello! How can I assist you?")
+            speak("Hello! How can I help you ?")
         elif "your name" in command:
-            speak("I am your voice assistant and my name is kelly.")
+            speak(" My name is Miyo")
+        elif "joke" in command:
+            joke = random.choice(jokes)
+            speak(joke)
+        elif "mum" in command:
+            speak("hello mother, how are you")
+        elif "fine" in command:
+            speak("that is good")
+        elif "my name" in command:
+            speak("Your name is kusum choudhary")
+        
         else:
             speak("I did not understand that. Please try again.")
     else:
